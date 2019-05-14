@@ -55,6 +55,7 @@ def on_mouse_press(x, y, button, modifiers):
         button_pressed = True
     else:
         print("not clicked")
+        button_pressed = False
 
 def on_mouse_release(x, y, button, modifiers):
     my_button_x, my_button_y, my_button_w, my_button_h = my_button
@@ -66,6 +67,7 @@ def on_mouse_release(x, y, button, modifiers):
         button_pressed = False
     else:
         print("not clicked")
+        button_pressed = False
 
 
 def setup():
