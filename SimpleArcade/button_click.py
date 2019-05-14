@@ -15,7 +15,7 @@ HEIGHT = 480
 
 # There are better ways to represent buttons
 my_button = [100, 200, 150, 50]  # x, y, width, height
-
+button_pressed = False
 
 def on_update(delta_time):
     pass
@@ -23,12 +23,16 @@ def on_update(delta_time):
 
 def on_draw():
     arcade.start_render()
+    if button_pressed:
+        color = arcade.color.ASH_GREY
+    else:
+        color = arcade.color.BLACK
     # Draw in here...
     arcade.draw_xywh_rectangle_filled(my_button[0],
                                       my_button[1],
                                       my_button[2],
                                       my_button[3],
-                                      arcade.color.BLACK)
+                                      color)
 
 
 def on_key_press(key, modifiers):
@@ -42,11 +46,24 @@ def on_key_release(key, modifiers):
 def on_mouse_press(x, y, button, modifiers):
     # unpack the button list into readable? variables.
     my_button_x, my_button_y, my_button_w, my_button_h = my_button
+    global button_pressed
 
     # Need to check all four limits of the button.
     if (x > my_button_x and x < my_button_x + my_button_w and
             y > my_button_y and y < my_button_y + my_button_h):
         print("Clicked!!!")
+        button_pressed = True
+    else:
+        print("not clicked")
+
+def on_mouse_release(x, y, button, modifiers):
+    my_button_x, my_button_y, my_button_w, my_button_h = my_button
+    global button_pressed
+
+    if (x > my_button_x and x < my_button_x + my_button_w and
+            y > my_button_y and y < my_button_y + my_button_h):
+        print("Released!!!")
+        button_pressed = False
     else:
         print("not clicked")
 
@@ -62,6 +79,7 @@ def setup():
     window.on_key_press = on_key_press
     window.on_key_release = on_key_release
     window.on_mouse_press = on_mouse_press
+    window.on_mouse_release = on_mouse_release
 
     arcade.run()
 
