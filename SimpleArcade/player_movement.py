@@ -32,6 +32,7 @@ def on_draw():
     arcade.start_render()
     # Draw in here...
     arcade.draw_circle_filled(player_x, player_y, 25, arcade.color.BLUE)
+    arcade.draw_circle_filled(player_y, player_x, 25, arcade.color.RED)
 
 
 def on_key_press(key, modifiers):
@@ -71,7 +72,7 @@ def on_mouse_press(x, y, button, modifiers):
 def setup():
     arcade.open_window(WIDTH, HEIGHT, "My Arcade Game")
     arcade.set_background_color(arcade.color.WHITE)
-    arcade.schedule(on_update, 1/60)
+    arcade.schedule(on_update, 1/1000)
 
     # Override arcade window methods
     window = arcade.get_window()
