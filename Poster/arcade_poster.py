@@ -3,6 +3,7 @@ import arcade
 WIDTH = 405
 HEIGHT = 720
 
+continue_messages = True
 
 def on_update(delta_time):
     pass
@@ -91,7 +92,7 @@ bubbles.append(TextBubble("kthx bye", "right", -3075))
 def on_draw():
     arcade.start_render()
 
-    global bubbles
+    global bubbles, continue_messages
 
     arcade.draw_rectangle_filled(WIDTH/2, HEIGHT - 25, WIDTH, 50, (230, 230, 230))
     arcade.draw_text("Mr. Thanos", WIDTH/2 - 50, HEIGHT - 35, arcade.color.BLACK, font_size=20)
@@ -106,7 +107,11 @@ def on_draw():
             elif bubbles[i].side == "right":
                 arcade.draw_rectangle_filled(305, bubbles[i].y, 175, 30, (0, 118, 255))
                 arcade.draw_text(bubbles[i].text, 230, bubbles[i].y - 5, arcade.color.WHITE, 12)
-        bubbles[i].y += 5
+                if bubbles[i].text == "kthx bye":
+                    continue_messages = False
+
+        if continue_messages:
+            bubbles[i].y += 5
 
 
 def setup():
