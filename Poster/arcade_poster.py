@@ -98,6 +98,11 @@ def on_draw():
     arcade.draw_text("Mr. Thanos", WIDTH/2 - 50, HEIGHT - 35, arcade.color.BLACK, font_size=20)
     profile_pic = arcade.load_texture("Thanos.jpg")
     arcade.draw_texture_rectangle(WIDTH/2 - 80, HEIGHT - 25, 30, 35, profile_pic)
+    arcade.draw_rectangle_outline(WIDTH/2 - 80, HEIGHT - 25, 30, 35, arcade.color.BLUE, border_width=2)
+    arcade.draw_line(WIDTH/2 - 55, HEIGHT - 40, WIDTH/2 + 70, HEIGHT - 40, arcade.color.BLACK)
+    arcade.draw_rectangle_outline(30, HEIGHT - 25, 30, 30, (0, 118, 255))
+    arcade.draw_line(35, HEIGHT - 20, 25, HEIGHT - 25, (0, 118, 255))
+    arcade.draw_line(35, HEIGHT - 30, 25, HEIGHT - 25, (0, 118, 255))
 
     for i in range(len(bubbles)):
         if 20 < bubbles[i].y < 650:
@@ -109,9 +114,18 @@ def on_draw():
                 arcade.draw_text(bubbles[i].text, 230, bubbles[i].y - 5, arcade.color.WHITE, 12)
                 if bubbles[i].text == "kthx bye":
                     continue_scrolling = False
-
         if continue_scrolling:
-            bubbles[i].y += 5
+            bubbles[i].y += 2
+        else:
+            arcade.draw_text("You left the chat", WIDTH / 2 - 125, HEIGHT / 2, arcade.color.BLACK, font_size=30)
+
+
+def on_mouse_press(x, y, button, modifiers):
+    global continue_scrolling
+
+    if 15 < x < 45:
+        if HEIGHT - 45 < y < HEIGHT - 15:
+            continue_scrolling = False
 
 
 def setup():
@@ -122,6 +136,7 @@ def setup():
     # Override arcade window methods
     window = arcade.get_window()
     window.on_draw = on_draw
+    window.on_mouse_press = on_mouse_press
 
     arcade.run()
 
