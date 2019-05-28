@@ -12,8 +12,12 @@ def on_update(delta_time):
 def on_draw():
     arcade.start_render()
     # Draw in here...
-    arcade.draw_lrtb_rectangle_filled(1, 402, 798, 10, (255, 0, 0))
-    arcade.draw_lrtb_rectangle_filled(407, 798, 794, 4, (0, 0, 255))
+    arcade.draw_lrtb_rectangle_filled(2, 797, 793, 402, (245, 245, 245))
+    arcade.draw_lrtb_rectangle_filled(1, 796, 403, 4, (255, 0, 0))
+    arcade.draw_circle_filled(268, 502, -275, (255, 255, 0))
+    arcade.draw_circle_filled(191, 587, -32, (0, 0, 0))
+    arcade.draw_circle_filled(375, 585, 29, (0, 0, 0))
+    arcade.draw_ellipse_filled(256, 406, 161, 74, (255, 0, 0))
 
 
 def on_key_press(key, modifiers):
