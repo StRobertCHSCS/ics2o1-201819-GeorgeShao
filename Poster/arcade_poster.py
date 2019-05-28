@@ -1,14 +1,18 @@
 import arcade
 
+# Dimensions of the window
 WIDTH = 405
 HEIGHT = 720
 
+# Variable that determines whether the chat should continue to scroll or not
 continue_scrolling = True
+
 
 def on_update(delta_time):
     pass
 
 
+# TextBubble object that stores msg info
 class TextBubble():
     def __init__(self, text, side, y):
         self.text = text
@@ -16,8 +20,11 @@ class TextBubble():
         self.y = y
 
 
+# list that stores TextBubble objects
 bubbles = []
 
+
+# add TextBubble objects to list
 bubbles.append(TextBubble("Hey, what's up?", "left", 50))
 bubbles.append(TextBubble("Nothing much...", "right", -25))
 bubbles.append(TextBubble("EXCEPT MY COMPUTER", "right", -50))
@@ -89,11 +96,13 @@ bubbles.append(TextBubble("of that malware", "left", -3025))
 bubbles.append(TextBubble("kthx bye", "right", -3075))
 
 
+# Drawing function for PyArcade
 def on_draw():
     arcade.start_render()
 
     global bubbles, continue_scrolling
 
+    # Draws chat elements
     arcade.draw_rectangle_filled(WIDTH/2, HEIGHT - 25, WIDTH, 50, (230, 230, 230))
     arcade.draw_text("Mr. Thanos", WIDTH/2 - 50, HEIGHT - 35, arcade.color.BLACK, font_size=20)
     profile_pic = arcade.load_texture("Thanos.jpg")
@@ -104,6 +113,7 @@ def on_draw():
     arcade.draw_line(35, HEIGHT - 20, 25, HEIGHT - 25, (0, 118, 255))
     arcade.draw_line(35, HEIGHT - 30, 25, HEIGHT - 25, (0, 118, 255))
 
+    # Draws chat text bubbles
     for i in range(len(bubbles)):
         if 20 < bubbles[i].y < 650:
             if bubbles[i].side == "left":
@@ -120,14 +130,17 @@ def on_draw():
             arcade.draw_text("You left the chat", WIDTH / 2 - 125, HEIGHT / 2, arcade.color.BLACK, font_size=30)
 
 
+# Mouse click function for PyArcade
 def on_mouse_press(x, y, button, modifiers):
     global continue_scrolling
 
+    # if back button is clicked (at top left corner of screen), the chat will stop scrolling
     if 15 < x < 45:
         if HEIGHT - 45 < y < HEIGHT - 15:
             continue_scrolling = False
 
 
+# Setup function for PyArcade
 def setup():
     arcade.open_window(WIDTH, HEIGHT, "Malware Prevention Poster - George Shao")
     arcade.set_background_color(arcade.color.WHITE)
