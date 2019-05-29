@@ -576,7 +576,6 @@ def on_mouse_release(x, y, button, modifiers):
             if chosen_shape_row == 10:
                 line_thin.append(LineThin(start_x, start_y, end_x, end_y, color))
 
-
     elif x < 100 and 750 < y < 800:
         # Exports PyArcade python code into Exported_Code.py file
         with open('Exported_Code.py', 'w') as writer:
