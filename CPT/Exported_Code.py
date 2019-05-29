@@ -10,9 +10,7 @@ def on_update(delta_time):
  
 def on_draw(): 
     arcade.start_render() 
-    # Drawing code here 
-    arcade.draw_circle_filled(171, 552, -485, (255, 0, 0))
-    arcade.draw_arc_filled(319, 515, 423, 212, (0, 0, 255), 180, 360)
+    # Generated code will show here
 
  
 def on_key_press(key, modifiers): 
