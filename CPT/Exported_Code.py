@@ -2,7 +2,7 @@ import arcade
  
 WIDTH = 800 
 HEIGHT = 800 
- 
+
  
 def on_update(delta_time): 
     pass 
@@ -10,7 +10,7 @@ def on_update(delta_time):
  
 def on_draw(): 
     arcade.start_render() 
-    # Generated code will show here
+    # Generated code will show here...
 
  
 def on_key_press(key, modifiers): 
@@ -39,4 +39,4 @@ def setup():
  
  
 if __name__ == '__main__': 
-    setup() 
+    setup()
